@@ -24,21 +24,15 @@
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
   
-  /* Colorful accent colors */
-  --purple-accent: hsl(270, 70%, 60%);
-  --pink-accent: hsl(330, 85%, 65%);
-  --teal-accent: hsl(180, 70%, 50%);
-  --orange-accent: hsl(25, 95%, 60%);
-  
   /* Sidebar variables */
-  --sidebar-background: hsl(220, 100%, 97%);
-  --sidebar-foreground: hsl(240, 60%, 25%);
+  --sidebar-background: hsl(0, 0%, 100%);
+  --sidebar-foreground: hsl(20, 14.3%, 4.1%);
   --sidebar-primary: hsl(207, 90%, 54%);
   --sidebar-primary-foreground: hsl(211, 100%, 99%);
-  --sidebar-accent: hsl(270, 80%, 96%);
-  --sidebar-accent-foreground: hsl(270, 70%, 40%);
-  --sidebar-border: hsl(270, 50%, 85%);
-  --sidebar-ring: hsl(270, 70%, 60%);
+  --sidebar-accent: hsl(60, 4.8%, 95.9%);
+  --sidebar-accent-foreground: hsl(24, 9.8%, 10%);
+  --sidebar-border: hsl(20, 5.9%, 90%);
+  --sidebar-ring: hsl(20, 14.3%, 4.1%);
 }
 
 .dark {
