@@ -5,7 +5,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
+        "distDir": "dist/public", // <-- IMPORTANT: MATCHES YOUR VITE CONFIG
         "buildCommand": "npm run build:client"
       }
     },
@@ -19,10 +19,13 @@
   ],
   "rewrites": [
     {
+      // 1. Catches all requests to your API (e.g., /api/data)
       "source": "/api/(.*)", 
-      "destination": "server/index.ts"
+      "destination": "server/index.ts" 
     },
     { 
+      // 2. Catches everything else (including /, /page-1, /page-2) 
+      // and routes it to the static index.html file in the client's output folder
       "source": "/(.*)", 
       "destination": "/index.html" 
     }
