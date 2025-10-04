@@ -5,7 +5,8 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/public", // <-- IMPORTANT: MATCHES YOUR VITE CONFIG
+        // --- CORRECTED OUTPUT DIRECTORY ---
+        "distDir": "dist/public", 
         "buildCommand": "npm run build:client"
       }
     },
@@ -19,13 +20,13 @@
   ],
   "rewrites": [
     {
-      // 1. Catches all requests to your API (e.g., /api/data)
+      // 1. Catches API requests and routes them to the Serverless Function
       "source": "/api/(.*)", 
-      "destination": "server/index.ts" 
+      "destination": "server/index.ts"
     },
     { 
-      // 2. Catches everything else (including /, /page-1, /page-2) 
-      // and routes it to the static index.html file in the client's output folder
+      // 2. Catches everything else and routes it to the static index.html
+      // This uses the file found inside the corrected "dist/public" folder
       "source": "/(.*)", 
       "destination": "/index.html" 
     }
