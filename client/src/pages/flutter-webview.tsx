@@ -8,6 +8,30 @@ import { Copy, CheckCircle, FileText, Check, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
+const renderTextWithLinks = (text: string) => {
+  if (!text) return null;
+  
+  const urlRegex = /(https:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline"
+        >
+          {part}
+        </a>
+      );
+    }
+    return <span key={index}>{part}</span>;
+  });
+};
+
 export default function FlutterWebView() {
   const [configs, setConfigs] = useState<string[]>(Array(20).fill(""));
   const [configLabels, setConfigLabels] = useState<string[]>(Array(20).fill(""));
@@ -262,6 +286,14 @@ export default function FlutterWebView() {
                       className="min-h-[100px] pr-2 pb-12 border-gray-200 focus:border-blue-400 focus:ring-blue-400 resize-y"
                       rows={3}
                     />
+                    {configValue && (
+                      <div className="mt-2 p-3 bg-gray-50 rounded-md border border-gray-200">
+                        <p className="text-xs text-gray-500 mb-1 font-medium">Preview:</p>
+                        <div className="text-sm text-gray-700 whitespace-pre-wrap break-words">
+                          {renderTextWithLinks(configValue)}
+                        </div>
+                      </div>
+                    )}
                     <div className="absolute right-2 bottom-2 flex gap-1">
                       <Button
                         variant="default"
