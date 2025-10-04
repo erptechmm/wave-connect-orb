@@ -8,6 +8,31 @@ import { Copy, CheckCircle, FileText, Check, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
+const renderTextWithLinks = (text: string) => {
+  if (!text) return null;
+  
+  const urlRegex = /(https:\/\/[^\s]+|www\.[^\s]+)/g;
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      const href = part.startsWith('www.') ? `https://${part}` : part;
+      return (
+        <a
+          key={index}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline"
+        >
+          {part}
+        </a>
+      );
+    }
+    return <span key={index}>{part}</span>;
+  });
+};
+
 export default function FlutterWebView() {
   const [configs, setConfigs] = useState<string[]>(Array(20).fill(""));
   const [configLabels, setConfigLabels] = useState<string[]>(Array(20).fill(""));
@@ -308,6 +333,11 @@ export default function FlutterWebView() {
                       </Button>
                     </div>
                   </div>
+                  {configValue && (
+                    <div className="mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700 whitespace-pre-wrap break-words">
+                      {renderTextWithLinks(configValue)}
+                    </div>
+                  )}
                 </div>
               );
             })}
