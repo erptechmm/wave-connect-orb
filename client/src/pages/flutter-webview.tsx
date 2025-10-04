@@ -184,13 +184,15 @@ export default function FlutterWebView() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50">
       <main className="max-w-4xl mx-auto px-4 py-8">
-        <Card className="mb-6 shadow-lg border-0 bg-white/90 backdrop-blur-sm">
-          <CardHeader className="pb-4">
-            <div className="flex items-center space-x-2">
-              <FileText className="h-6 w-6 text-blue-500" />
-              <CardTitle className="text-xl font-semibold text-gray-800">
+        <Card className="mb-6 shadow-2xl shadow-purple-200/50 border-2 border-purple-200 bg-white/95 backdrop-blur-sm">
+          <CardHeader className="pb-4 bg-gradient-to-r from-purple-50 to-blue-50 border-b-2 border-purple-200">
+            <div className="flex items-center space-x-3">
+              <div className="p-2 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg shadow-md">
+                <FileText className="h-6 w-6 text-white" />
+              </div>
+              <CardTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                 Flutter Web View App Configuration
               </CardTitle>
             </div>
@@ -211,7 +213,7 @@ export default function FlutterWebView() {
                         <Input
                           value={tempLabel}
                           onChange={(e) => setTempLabel(e.target.value)}
-                          className="h-7 text-sm"
+                          className="h-7 text-sm border-2 border-purple-300 focus:border-purple-500 shadow-sm"
                           autoFocus
                           onKeyDown={(e) => {
                             if (e.key === 'Enter') saveLabel(configIndex);
@@ -222,7 +224,7 @@ export default function FlutterWebView() {
                           variant="default"
                           size="sm"
                           onClick={() => saveLabel(configIndex)}
-                          className="h-7 px-2"
+                          className="h-7 px-2 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-md"
                         >
                           <Check className="h-3 w-3 mr-1" />
                           Save
@@ -231,7 +233,7 @@ export default function FlutterWebView() {
                           variant="secondary"
                           size="sm"
                           onClick={cancelEditingLabel}
-                          className="h-7 px-2"
+                          className="h-7 px-2 border-2 border-gray-300 hover:border-gray-400 shadow-sm"
                         >
                           <X className="h-3 w-3 mr-1" />
                           Cancel
@@ -239,14 +241,14 @@ export default function FlutterWebView() {
                       </>
                     ) : (
                       <>
-                        <Label htmlFor={`config-${configNum}`} className="text-sm font-medium text-gray-700">
+                        <Label htmlFor={`config-${configNum}`} className="text-sm font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                           {configLabels[configIndex] || `Config ${configNum}`}
                         </Label>
                         <Button
                           variant="secondary"
                           size="sm"
                           onClick={() => startEditingLabel(configIndex)}
-                          className="h-6 px-2 text-xs"
+                          className="h-6 px-2 text-xs border border-purple-300 hover:bg-purple-100 hover:text-purple-700 shadow-sm"
                         >
                           Edit
                         </Button>
@@ -259,7 +261,7 @@ export default function FlutterWebView() {
                       placeholder={`Enter config ${configNum}`}
                       value={configValue}
                       onChange={(e) => updateConfigValue(configIndex, e.target.value)}
-                      className="min-h-[100px] pr-2 pb-12 border-gray-200 focus:border-blue-400 focus:ring-blue-400 resize-y"
+                      className="min-h-[100px] pr-2 pb-12 border-2 border-purple-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-300 resize-y shadow-md shadow-purple-100/50 rounded-lg"
                       rows={3}
                     />
                     <div className="absolute right-2 bottom-2 flex gap-1">
@@ -268,11 +270,11 @@ export default function FlutterWebView() {
                         size="sm"
                         onClick={() => saveConfig(configIndex)}
                         disabled={configSaving}
-                        className="h-8 px-3"
+                        className="h-8 px-3 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg shadow-purple-300/50 border-0"
                       >
                         {configSaving ? (
                           <>
-                            <div className="h-3 w-3 mr-1 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
+                            <div className="h-3 w-3 mr-1 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                             Saving
                           </>
                         ) : configSaved ? (
@@ -292,7 +294,7 @@ export default function FlutterWebView() {
                           navigator.clipboard.writeText(configValue);
                           setConfigCopied(configIndex, true);
                         }}
-                        className="h-8 px-3"
+                        className="h-8 px-3 border-2 border-purple-300 hover:bg-purple-100 hover:text-purple-700 shadow-md"
                       >
                         {configCopied ? (
                           <>

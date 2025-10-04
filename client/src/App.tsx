@@ -40,16 +40,18 @@ function AppSidebar({ user }: { user: any }) {
   };
   
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center justify-between px-2 py-1">
-          <h2 className="text-lg font-semibold text-sidebar-foreground">Navigation</h2>
+    <Sidebar className="border-r-2 border-purple-200 shadow-lg shadow-purple-100">
+      <SidebarHeader className="border-b-2 border-sidebar-border bg-gradient-to-r from-purple-50 to-blue-50">
+        <div className="flex items-center justify-between px-4 py-3">
+          <h2 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            Mizu & Min
+          </h2>
           {user && (
             <Button
               variant="ghost"
               size="sm"
               onClick={handleLogout}
-              className="h-8"
+              className="h-8 hover:bg-purple-100 hover:text-purple-700 transition-colors"
             >
               <LogOut className="h-4 w-4" />
             </Button>
