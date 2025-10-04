@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      flutter_webview_configs: {
+        Row: {
+          config_index: number
+          config_label: string | null
+          config_text: string
+          created_at: string | null
+          id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          config_index: number
+          config_label?: string | null
+          config_text?: string
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          config_index?: number
+          config_label?: string | null
+          config_text?: string
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       lovable_prompts: {
         Row: {
           created_at: string
@@ -40,6 +70,36 @@ export type Database = {
           prompt_label?: string | null
           prompt_text?: string
           updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      odoo_hosting_configs: {
+        Row: {
+          config_index: number
+          config_label: string | null
+          config_text: string
+          created_at: string | null
+          id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          config_index: number
+          config_label?: string | null
+          config_text?: string
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          config_index?: number
+          config_label?: string | null
+          config_text?: string
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
           user_id?: string
         }
         Relationships: []
